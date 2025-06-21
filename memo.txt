@@ -1,0 +1,137 @@
+
+# shadcn ui
+pnpm dlx shadcn@latest add button
+pnpm dlx shadcn@latest add card
+pnpm dlx shadcn@latest add scroll-area
+pnpm dlx shadcn@latest add separator
+pnpm dlx shadcn@latest add input
+pnpm dlx shadcn@latest add textarea
+
+======
+
+src/
+├── app/
+│   ├── layout.tsx          # アプリケーションのルートレイアウト
+│   ├── page.tsx           # メインページ
+│   └── globals.css        # グローバルスタイル
+│
+├── components/
+│   ├── editor/
+│   │   ├── AIEditor.tsx           # メインのエディタコンポーネント
+│   │   ├── EditorToolbar.tsx      # エディタのツールバー
+│   │   ├── TextSelectionMenu.tsx  # テキスト選択時のメニュー
+│   │   ├── AIChat.tsx             # AIチャットモーダル
+│   │   ├── AIAnalysisPanel.tsx    # AI分析パネル
+│   │   ├── OutlinePanel.tsx       # アウトラインパネル
+│   │   └── types.ts               # エディタ関連の型定義
+│   │
+│   ├── ui/                # shadcn/uiコンポーネント
+│   │   ├── alert.tsx
+│   │   ├── button.tsx
+│   │   ├── dialog.tsx
+│   │   ├── card.tsx
+│   │   └── ...
+│   │
+│   └── shared/           # 共通コンポーネント
+│       ├── Notification.tsx
+│       └── LoadingSpinner.tsx
+│
+├── lib/
+│   ├── constants/
+│   │   ├── menu-structure.ts      # メニュー構造の定義
+│   │   └── editor-config.ts       # エディタの設定
+│   │
+│   ├── hooks/
+│   │   ├── useTextSelection.ts    # テキスト選択のカスタムフック
+│   │   ├── useAIAnalysis.ts       # AI分析のカスタムフック
+│   │   └── useNotification.ts     # 通知システムのカスタムフック
+│   │
+│   ├── services/
+│   │   ├── ai-service.ts          # AI機能のAPI通信
+│   │   └── editor-service.ts      # エディタの機能
+│   │
+│   ├── utils/
+│   │   ├── text-processing.ts     # テキスト処理ユーティリティ
+│   │   └── style-utils.ts         # スタイル関連ユーティリティ
+│   │
+│   ├── llm/
+│   │   ├── client.ts              # LLM API clientの設定
+│   │   ├── rate-limiter.ts        # API呼び出しの制限制御
+│   │   └── error-handler.ts       # エラーハンドリング
+│   │
+│   ├── prompts/
+│   │   ├── templates/
+│   │   │   ├── summarize.ts       # 要約用プロンプト
+│   │   │   ├── translate.ts       # 翻訳用プロンプト
+│   │   │   ├── rephrase.ts        # 言い換え用プロンプト
+│   │   │   └── continue.ts        # 文章続き生成用プロンプト
+│   │   │
+│   │   ├── constants/
+│   │   │   ├── languages.ts       # 言語設定
+│   │   │   ├── styles.ts          # 文体設定
+│   │   │   └── tones.ts          # トーン設定
+│   │   │
+│   │   └── builder.ts            # プロンプトビルダー
+│   │
+│   └── services/
+│       └── ai-service.ts         # AI機能の統合サービス
+│
+├── types/
+│   ├── editor.ts               # エディタ関連の型定義
+│   ├── ai.ts                   # AI機能関連の型定義
+│   └── common.ts               # 共通の型定義
+│
+└── config/
+    ├── tailwind.config.ts     # Tailwindの設定
+    │  
+    ├── i18n/
+    │   ├── ja.json              # 日本語ローカライズ
+    │   ├── en.json              # 英語ローカライズ
+    │   └── zh.json              # 中国語ローカライズ
+    │
+    └── llm-config.ts           # LLM設定
+    
+src/app/layout.tsx
+src/app/page.tsx
+src/app/globals.css
+src/components/editor/AIEditor.tsx
+src/components/editor/EditorToolbar.tsx
+src/components/editor/TextSelectionMenu.tsx
+src/components/editor/AIChat.tsx
+src/components/editor/AIAnalysisPanel.tsx
+src/components/editor/OutlinePanel.tsx
+src/components/editor/types.ts
+src/components/ui/alert.tsx
+src/components/ui/button.tsx
+src/components/ui/dialog.tsx
+src/components/ui/card.tsx
+src/components/shared/Notification.tsx
+src/components/shared/LoadingSpinner.tsx
+src/lib/constants/menu-structure.ts
+src/lib/constants/editor-config.ts
+src/lib/hooks/useTextSelection.ts
+src/lib/hooks/useAIAnalysis.ts
+src/lib/hooks/useNotification.ts
+src/lib/services/ai-service.ts
+src/lib/services/editor-service.ts
+src/lib/utils/text-processing.ts
+src/lib/utils/style-utils.ts
+src/lib/llm/client.ts
+src/lib/llm/rate-limiter.ts
+src/lib/llm/error-handler.ts
+src/lib/prompts/templates/summarize.ts
+src/lib/prompts/templates/translate.ts
+src/lib/prompts/templates/rephrase.ts
+src/lib/prompts/templates/continue.ts
+src/lib/prompts/constants/languages.ts
+src/lib/prompts/constants/styles.ts
+src/lib/prompts/constants/tones.ts
+src/lib/prompts/builder.ts
+src/types/editor.ts
+src/types/ai.ts
+src/types/common.ts
+src/config/tailwind.config.ts
+src/config/i18n/ja.json
+src/config/i18n/en.json
+src/config/i18n/zh.json
+src/config/llm-config.ts

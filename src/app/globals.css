@@ -1,0 +1,379 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+
+    --bn-colors-highlights-gray-text: #9b9a97;
+    --bn-colors-highlights-gray-background: #ebeced;
+    --bn-colors-highlights-brown-text: #64473a;
+    --bn-colors-highlights-brown-background: #e9e5e3;
+    --bn-colors-highlights-red-text: #e03e3e;
+    --bn-colors-highlights-red-background: #fbe4e4;
+    --bn-colors-highlights-orange-text: #d9730d;
+    --bn-colors-highlights-orange-background: #f6e9d9;
+    --bn-colors-highlights-yellow-text: #dfab01;
+    --bn-colors-highlights-yellow-background: #fbf3db;
+    --bn-colors-highlights-green-text: #4d6461;
+    --bn-colors-highlights-green-background: #ddedea;
+    --bn-colors-highlights-blue-text: #0b6e99;
+    --bn-colors-highlights-blue-background: #ddebf1;
+    --bn-colors-highlights-purple-text: #6940a5;
+    --bn-colors-highlights-purple-background: #eae4f2;
+    --bn-colors-highlights-pink-text: #ad1a72;
+    --bn-colors-highlights-pink-background: #f4dfeb;
+
+    /* コンテンツジェネレーター用の変数 */
+    --prose-headings: 0 0% 9%;
+    --prose-body: 0 0% 45.1%;
+    --prose-borders: 0 0% 89.8%;
+    --prose-code: 0 0% 9%;
+    --prose-bg: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* ダークモード時のハイライトカラー */
+    --bn-colors-highlights-gray-text: #c1c1c1;
+    --bn-colors-highlights-gray-background: #2d2d2d;
+    --bn-colors-highlights-brown-text: #b38b7d;
+    --bn-colors-highlights-brown-background: #2b2422;
+    --bn-colors-highlights-red-text: #ff5555;
+    --bn-colors-highlights-red-background: #2c1f1f;
+    --bn-colors-highlights-orange-text: #ffb86c;
+    --bn-colors-highlights-orange-background: #2d261c;
+    --bn-colors-highlights-yellow-text: #f1fa8c;
+    --bn-colors-highlights-yellow-background: #2d2c1f;
+    --bn-colors-highlights-green-text: #50fa7b;
+    --bn-colors-highlights-green-background: #1f2c1f;
+    --bn-colors-highlights-blue-text: #8be9fd;
+    --bn-colors-highlights-blue-background: #1f2c2d;
+    --bn-colors-highlights-purple-text: #bd93f9;
+    --bn-colors-highlights-purple-background: #2d1f2c;
+    --bn-colors-highlights-pink-text: #ff79c6;
+    --bn-colors-highlights-pink-background: #2c1f2c;
+
+    /* ダークモード時のコンテンツジェネレーター用の変数 */
+    --prose-headings: 0 0% 98%;
+    --prose-body: 0 0% 63.9%;
+    --prose-borders: 0 0% 14.9%;
+    --prose-code: 0 0% 98%;
+    --prose-bg: 0 0% 3.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* BlockNoteのライト/ダークモードスタイル
+.bn-container[data-custom-font] .bn-editor {
+  /* ライトモード - デフォルト */
+  /* --bn-colors-editor-text: hsl(var(--foreground));
+  --bn-colors-editor-background: hsl(var(--background));
+  --bn-colors-menu-text: hsl(var(--foreground));
+  --bn-colors-menu-background: hsl(var(--card));
+  --bn-colors-tooltip-text: hsl(var(--foreground));
+  --bn-colors-tooltip-background: hsl(var(--card));
+  --bn-colors-hovered: hsl(var(--muted));
+  --bn-colors-selected: hsl(var(--accent));
+  --bn-colors-border: hsl(var(--border));
+} */
+
+/* ダークモードの設定を.darkクラス配下に追加 */
+/* .dark .bn-container[data-custom-font] .bn-editor {
+  --bn-colors-editor-text: hsl(var(--foreground));
+  --bn-colors-editor-background: hsl(var(--background));
+  --bn-colors-menu-text: hsl(var(--foreground));
+  --bn-colors-menu-background: hsl(var(--card));
+  --bn-colors-tooltip-text: hsl(var(--foreground));
+  --bn-colors-tooltip-background: hsl(var(--card));
+  --bn-colors-hovered: hsl(var(--muted));
+  --bn-colors-selected: hsl(var(--accent));
+  --bn-colors-border: hsl(var(--border));
+}  */
+
+/* エディタのコンテナスタイルを既存のTailwindカラーシステムに合わせる */
+.editor {
+  @apply transition-colors duration-300;
+}
+
+.editor.light-mode .bn-container {
+  @apply bg-card text-foreground;
+}
+
+.editor.dark-mode .bn-container {
+  @apply bg-card text-foreground;
+}
+
+.text-default {
+  color: var(--bn-colors-editor-text);
+}
+
+.text-red {
+  color: var(--bn-colors-highlights-red-text);
+}
+
+.text-orange {
+  color: var(--bn-colors-highlights-orange-text);
+}
+
+.text-yellow {
+  color: var(--bn-colors-highlights-yellow-text);
+}
+
+.text-green {
+  color: var(--bn-colors-highlights-green-text);
+}
+
+.text-blue {
+  color: var(--bn-colors-highlights-blue-text);
+}
+
+.text-purple {
+  color: var(--bn-colors-highlights-purple-text);
+}
+
+.background-red {
+  background-color: var(--bn-colors-highlights-red-background);
+}
+
+.background-orange {
+  background-color: var(--bn-colors-highlights-orange-background);
+}
+
+.background-yellow {
+  background-color: var(--bn-colors-highlights-yellow-background);
+}
+
+.background-green {
+  background-color: var(--bn-colors-highlights-green-background);
+}
+
+.background-blue {
+  background-color: var(--bn-colors-highlights-blue-background);
+}
+
+.background-purple {
+  background-color: var(--bn-colors-highlights-purple-background);
+}
+
+.bn-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+}
+
+.bn-formatting-toolbar {
+  left: 10;
+  top: 0;
+  /* margin-inline: auto; */
+}
+
+.bn-container[data-custom-font] .bn-editor * {
+  font-family: var(--custom-font-family, "Arial"), sans-serif;
+  font-size: var(--custom-font-size, 14px);
+  /* line-height: var(--custom-line-height, 1.5); */
+}
+
+/* 共通コンポーネントスタイル */
+.card {
+  @apply bg-card text-card-foreground shadow-sm rounded-lg border border-border;
+}
+
+.button {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.button-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
+.input {
+  @apply bg-background text-foreground border border-input;
+}
+
+.dialog {
+  @apply bg-background text-foreground;
+}
+
+.tooltip {
+  @apply bg-popover text-popover-foreground;
+}
+
+/* ダークモードのトランジション */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* プロースタイルのカスタマイズ */
+.prose {
+  --tw-prose-body: hsl(var(--prose-body));
+  --tw-prose-headings: hsl(var(--prose-headings));
+  --tw-prose-lead: hsl(var(--prose-body));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--prose-headings));
+  --tw-prose-counters: hsl(var(--prose-body));
+  --tw-prose-bullets: hsl(var(--prose-body));
+  --tw-prose-hr: hsl(var(--prose-borders));
+  --tw-prose-quotes: hsl(var(--prose-body));
+  --tw-prose-quote-borders: hsl(var(--prose-borders));
+  --tw-prose-captions: hsl(var(--prose-body));
+  --tw-prose-code: hsl(var(--prose-code));
+  --tw-prose-pre-code: hsl(var(--prose-code));
+  --tw-prose-pre-bg: hsl(var(--prose-bg));
+  --tw-prose-th-borders: hsl(var(--prose-borders));
+  --tw-prose-td-borders: hsl(var(--prose-borders));
+}
+
+.dark .prose {
+  --tw-prose-body: hsl(var(--prose-body));
+  --tw-prose-headings: hsl(var(--prose-headings));
+  --tw-prose-lead: hsl(var(--prose-body));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--prose-headings));
+  --tw-prose-counters: hsl(var(--prose-body));
+  --tw-prose-bullets: hsl(var(--prose-body));
+  --tw-prose-hr: hsl(var(--prose-borders));
+  --tw-prose-quotes: hsl(var(--prose-body));
+  --tw-prose-quote-borders: hsl(var(--prose-borders));
+  --tw-prose-captions: hsl(var(--prose-body));
+  --tw-prose-code: hsl(var(--prose-code));
+  --tw-prose-pre-code: hsl(var(--prose-code));
+  --tw-prose-pre-bg: hsl(var(--prose-bg));
+  --tw-prose-th-borders: hsl(var(--prose-borders));
+  --tw-prose-td-borders: hsl(var(--prose-borders));
+}
+
+/* カード、ボタン、入力要素のダークモードスタイル */
+.dark .card,
+.dark .button,
+.dark .input,
+.dark .select {
+  border-color: hsl(var(--border));
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+/* ホバー状態のスタイル */
+.dark .button:hover,
+.dark .select-trigger:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* 無効状態のスタイル */
+.dark .button:disabled,
+.dark .input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Select メニューのスタイル */
+.dark .select-content {
+  background-color: hsl(var(--popover));
+  border-color: hsl(var(--border));
+}
+
+.dark .select-item {
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .select-item:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* ダイアログのオーバーレイスタイル */
+.dark [data-overlay-container="true"] {
+  background-color: hsl(var(--background));
+}
+
+.dark [data-dialog-overlay="true"] {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ダイアログのスタイル */
+[role="dialog"] {
+  @apply bg-background text-foreground border-border;
+}
+
+[data-radix-popper-content-wrapper] {
+  @apply bg-background text-foreground;
+}
+
+.dark .dialog-overlay {
+  @apply bg-background/80 backdrop-blur-sm;
+}
+
+/* ダイアログ内のフォームコントロールのスタイル */
+.select-trigger,
+.select-content,
+.input,
+.textarea {
+  @apply bg-background text-foreground border-border;
+}
+
+.select-item:hover {
+  @apply bg-accent text-accent-foreground;
+}
