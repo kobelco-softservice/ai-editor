@@ -309,3 +309,46 @@ export const callDeepSeek = async (params: LLMRequestParams) => {
     }
   );
 };
+
+// IBM Cloud Graniteのストリーミング処理
+export const callIBMGraniteStream = async (params: LLMRequestParams) => {
+  // IBM Cloud IAMトークンをapiKeyとして渡す前提
+  const response = await fetch(`${params.endpoint}/v1/ai-models/${params.model}/completions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${params.apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messages: params.message,
+      stream: true,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new LLMError('IBM Granite request failed', 'ibm-granite', response.status);
+  }
+
+  return createStreamResponse(
+    response.body!.getReader(),
+    {
+      parseResponse: (line) => {
+        if (!line.startsWith('data: ')) return null;
+        const content = line.slice(6);
+        if (content === '[DONE]') return null;
+        try {
+          const data = JSON.parse(content);
+          return data.choices?.[0]?.delta?.content || null;
+        } catch (e) {
+          console.error('Error parsing IBM Granite response:', e);
+          return null;
+        }
+      },
+      shouldSkip: (line) => {
+        return line === 'data: [DONE]' ||
+          line.includes('"finish_reason":"stop"') ||
+          line.includes('"finish_reason":"length"');
+      }
+    }
+  );
+};
